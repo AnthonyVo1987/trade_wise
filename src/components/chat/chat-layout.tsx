@@ -5,6 +5,8 @@ import {
   SidebarProvider,
   Sidebar,
   SidebarInset,
+  SidebarHeader,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import ChatSidebar from "@/components/chat/sidebar";
 import ChatInterface from "@/components/chat/chat-interface";
@@ -23,6 +25,9 @@ export default function ChatLayout() {
           />
         </Sidebar>
         <SidebarInset>
+            <SidebarHeader className="border-b">
+                <SidebarTrigger/>
+            </SidebarHeader>
           <ChatInterface activePersona={activePersona} />
         </SidebarInset>
       </div>
