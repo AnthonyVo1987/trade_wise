@@ -2,6 +2,7 @@ import React from "react";
 import {
   SidebarHeader,
   SidebarContent,
+  SidebarFooter,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
@@ -12,8 +13,10 @@ import {
   TrendingUp,
   CircleDollarSign,
   Newspaper,
+  Briefcase,
 } from "lucide-react";
 import type { Persona } from "@/lib/types";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 interface ChatSidebarProps {
   activePersona: Persona;
@@ -25,6 +28,7 @@ const personas: { id: Persona; label: string; icon: React.ElementType }[] = [
   { id: "stock-analysis", label: "Stock Analysis", icon: TrendingUp },
   { id: "option-strategy", label: "Options Strategy", icon: CircleDollarSign },
   { id: "market-news", label: "Market News", icon: Newspaper },
+  { id: "portfolio-insight", label: "Portfolio Insight", icon: Briefcase },
 ];
 
 export default function ChatSidebar({
@@ -60,6 +64,9 @@ export default function ChatSidebar({
           ))}
         </SidebarMenu>
       </SidebarContent>
+      <SidebarFooter>
+        <ThemeToggle />
+      </SidebarFooter>
     </>
   );
 }

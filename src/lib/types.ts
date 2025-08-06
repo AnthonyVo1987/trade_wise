@@ -2,7 +2,8 @@ export type Persona =
   | 'dashboard'
   | 'stock-analysis'
   | 'option-strategy'
-  | 'market-news';
+  | 'market-news'
+  | 'portfolio-insight';
 
 export interface ChatMessage {
   id: string;

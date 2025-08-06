@@ -38,6 +38,11 @@ const personaDetails: Record<
     description: "Get the latest market news summary for any stock.",
     placeholder: "e.g., GOOG, NVDA...",
   },
+  "portfolio-insight": {
+    title: "Portfolio Insight",
+    description: "Get AI-powered insights into your stock portfolio.",
+    placeholder: "Upload your portfolio to get started.",
+  },
 };
 
 export default function ChatInterface({ activePersona }: ChatInterfaceProps) {
@@ -110,13 +115,13 @@ export default function ChatInterface({ activePersona }: ChatInterfaceProps) {
 
   return (
     <div className="flex flex-col h-full bg-background rounded-l-lg">
-      <header className="p-4 border-b">
+      <header className="p-6 border-b">
         <h2 className="text-2xl font-bold">{title}</h2>
         <p className="text-muted-foreground">{description}</p>
       </header>
 
-      <ScrollArea className="flex-1 p-4">
-        <div className="space-y-6">
+      <ScrollArea className="flex-1 p-6">
+        <div className="space-y-6 max-w-4xl mx-auto w-full">
           {messages.map((msg) => (
             <ChatMessageComponent key={msg.id} message={msg} />
           ))}
@@ -136,27 +141,29 @@ export default function ChatInterface({ activePersona }: ChatInterfaceProps) {
       </ScrollArea>
 
       <div className="p-4 border-t bg-background">
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-          {activePersona === "option-strategy" && <OptionsStrategyForm />}
-          <div className="relative">
-            <Input
-              name="message"
-              placeholder={placeholder}
-              className="pr-12 h-12 text-base"
-              disabled={isLoading || activePersona === "dashboard"}
-              autoComplete="off"
-            />
-            <Button
-              type="submit"
-              size="icon"
-              className="absolute top-1/2 right-2 -translate-y-1/2"
-              disabled={isLoading || activePersona === "dashboard"}
-              aria-label="Send message"
-            >
-              <Send className="w-5 h-5" />
-            </Button>
-          </div>
-        </form>
+        <div className="max-w-4xl mx-auto w-full">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+              {activePersona === "option-strategy" && <OptionsStrategyForm />}
+              <div className="relative">
+                <Input
+                  name="message"
+                  placeholder={placeholder}
+                  className="pr-14 h-14 text-base"
+                  disabled={isLoading || activePersona === "dashboard"}
+                  autoComplete="off"
+                />
+                <Button
+                  type="submit"
+                  size="icon"
+                  className="absolute top-1/2 right-2 -translate-y-1/2 w-10 h-10"
+                  disabled={isLoading || activePersona === "dashboard"}
+                  aria-label="Send message"
+                >
+                  <Send className="w-5 h-5" />
+                </Button>
+              </div>
+            </form>
+        </div>
       </div>
     </div>
   );
